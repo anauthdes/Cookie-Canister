@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "Cookie Canister",
+    "description": "A simple extension for reviewing, managing, and exporting your cookies.",
+    "version": "0.0.0.1",
+
+    "permissions": [
+        "storage",
+        "<all_urls>",
+        "cookies"
+    ],
+    "web_accessible_resources": [
+        
+    ],
+    "background":
+    {
+        
+    }
+}
