@@ -8,6 +8,12 @@ https://developer.chrome.com/docs/extensions/mv3/intro/
 https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/
 https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/
 
+concept links 
+--------
+editable tables
+https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content
+
+
  Features (WIP)
 
  -collect a list of cookies using the Chrome cookies API 
