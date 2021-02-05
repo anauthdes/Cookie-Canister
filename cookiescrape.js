@@ -5,4 +5,11 @@
 **should have functions to clear the current session list 
 **should have function to delete all cookies
 
+
 */
+
+function getAllCookiesFromTabs(tabs){
+	chrome.cookies.getAll({},function(cookies){
+		console.log(cookies);
+	});
+}

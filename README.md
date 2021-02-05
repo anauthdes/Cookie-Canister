@@ -2,6 +2,12 @@
  A simple extension for reviewing, managing, and exporting your cookies. 
  ------
 
+Will need to do a review for possibly updating to MV3 prior to extension release
+
+https://developer.chrome.com/docs/extensions/mv3/intro/
+https://developer.chrome.com/docs/extensions/mv3/intro/mv3-overview/
+https://developer.chrome.com/docs/extensions/mv3/intro/mv3-migration/
+
  Features (WIP)
 
  -collect a list of cookies using the Chrome cookies API 
