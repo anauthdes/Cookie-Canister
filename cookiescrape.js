@@ -8,6 +8,13 @@
 
 */
 
+chrome.browserAction.onClicked.addListener(function(tab) { 
+	console.log("tabs: ",chrome.tabs);
+	console.log("current tab: ",tab);
+	getAllCookiesFromTabs(tab)
+});
+
+
 function getAllCookiesFromTabs(tabs){
 	chrome.cookies.getAll({},function(cookies){
 		console.log(cookies);

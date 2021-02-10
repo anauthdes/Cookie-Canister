@@ -3,11 +3,15 @@
     "name": "Cookie Canister",
     "description": "A simple extension for reviewing, managing, and exporting your cookies.",
     "version": "0.0.0.1",
-
+     "browser_action": {},
     "permissions": [
         "storage",
         "<all_urls>",
-        "cookies"
+        "cookies",
+        "tabs",
+         "webRequest",
+        "declarativeNetRequest",
+        "declarativeNetRequestFeedback"
     ],
     "web_accessible_resources": [
         
@@ -15,6 +19,6 @@
     "background":
     {
         "scripts": ["cookiescrape.js"],
-        "persistent": false
+        "persistent": true
     }
 }

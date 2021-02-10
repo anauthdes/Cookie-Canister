@@ -13,6 +13,10 @@ concept links
 editable tables
 https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Editable_content
 
+COllecting cookies from tabs using web request option 
+--------
+https://developer.chrome.com/docs/extensions/reference/webRequest/
+
 
  Features (WIP)
 
