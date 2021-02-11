@@ -8,10 +8,27 @@
 
 */
 
+var curTab = 0;
+var IncomingRequests = [];
+
+chrome.webRequest.onBeforeRequest.addListener(function(details){
+	IncomingRequests.push(details);
+	/*if(details.tabId == curTab){
+		console.log(details);
+	}*/
+	return null;
+},{urls: ["<all_urls>"]})
+
+
 chrome.browserAction.onClicked.addListener(function(tab) { 
+	curTab = tab.id;
 	console.log("tabs: ",chrome.tabs);
 	console.log("current tab: ",tab);
 	getAllCookiesFromTabs(tab)
+	console.log(filterRequestsByTabID(IncomingRequests,curTab));
+
+
+
 });
 
 
@@ -19,4 +36,10 @@ function getAllCookiesFromTabs(tabs){
 	chrome.cookies.getAll({},function(cookies){
 		console.log(cookies);
 	});
+}
+
+function filterRequestsByTabID(requests, tabID){
+	return requests.filter(function (el) {
+  return el.tabId == tabID;
+});
 }
