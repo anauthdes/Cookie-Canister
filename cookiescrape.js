@@ -29,8 +29,9 @@ chrome.browserAction.onClicked.addListener(function(tab) {
     console.log("filtered requests", filterRequestsByTabID(IncomingRequests, curTab));
     filteredDomains = getInitiatorDomains(filterRequestsByTabID(IncomingRequests, curTab))
     for (var iii = 0; iii < filteredDomains.length; iii++) {
+        console.log("filtered cookies (",filteredDomains[iii],") :");
         chrome.cookies.getAll({domain:filteredDomains[iii]}, function(cookies) {
-            console.log("filtered cookies (",filteredDomains[iii],") :",cookies);
+            console.log(cookies);
         });
     }
 
@@ -52,7 +53,7 @@ function filterRequestsByTabID(requests, tabID) {
 function getInitiatorDomains(requests) {
     var domains = [];
     for (var iii = 0; iii < requests.length; iii++) {
-        if (domains.indexOf(cleanDomain(requests[iii].initiator)) < 0) {
+        if (typeof requests[iii].initiator == "string" && requests[iii].initiator.trim().length > 0 && domains.indexOf(cleanDomain(requests[iii].initiator)) < 0) {
             domains.push(cleanDomain(requests[iii].initiator));
         }
     }
@@ -61,5 +62,14 @@ function getInitiatorDomains(requests) {
 }
 
 function cleanDomain(domain) {
-    return domain!=undefined?domain.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/g)[0]:"";
+    //extracts the parts of the url that aren't needed in domain string eg:(http, https, :, /, etc.)
+    var domainInfo = typeof domain=="string"?domain.match(/(?:[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?\.)+[a-z0-9][a-z0-9-]{0,61}[a-z0-9]/g)[0]:"";
+    //splits into an array based on the parts of the url 
+    domainInfo = domainInfo.split(".");
+    //extracts only the primary domain if it is greater than 2 parts
+    if(domainInfo.length > 2){
+        domainInfo = domainInfo.slice(Math.max(domainInfo.length - 2, 0));
+    }
+    domainInfo = domainInfo.join(".");
+    return domainInfo;
 }
